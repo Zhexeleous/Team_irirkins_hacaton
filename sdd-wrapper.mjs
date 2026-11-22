@@ -12,7 +12,7 @@ const rawArgs = process.argv.slice(2);
 const isBaseline = rawArgs.includes('--baseline');
 
 const runnerScript = path.join(toolRootDir, 'plugin', 'isolation', 'sdd-runner.mjs');
-const testPluginSrc = path.join(toolRootDir, 'test-logs', 'index.js');
+const testPluginSrc = path.join(toolRootDir, 'plugin', 'test-logs', 'index.js');
 
 const opencodeDir = path.join(targetProjectDir, '.opencode');
 const opencodePluginsDir = path.join(opencodeDir, 'plugins');
@@ -53,7 +53,7 @@ if (!isBaseline) {
   fs.mkdirSync(opencodePluginsDir, { recursive: true });
   fs.copyFileSync(testPluginSrc, tempPluginDst);
   pluginInstalled = true;
-  console.log('[WRAPPER] Режим: OPTIMIZED (plugin/isolation + test-logs)');
+  console.log('[WRAPPER] Режим: OPTIMIZED (plugin/isolation + plugin/test-logs)');
 } else {
   console.log('[WRAPPER] Режим: BASELINE (Без оптимизаций)');
 }
